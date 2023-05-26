@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "aioworkers-backend"
+version = "0.1.0"
+description = ""
+authors = ["Pavel Larchenko <lar.pasha.chenko@gmail.com>"]
+readme = "README.md"
+packages = []
+
+[tool.poetry.dependencies]
+python = "3.10.6"
+aioworkers = "^0.21.1"
+aioworkers-aiohttp = "^0.7.3"
+aioworkers-redis = "^0.8"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.3.2"
+isort = "^5.12.0"
+pytest-aioworkers = "^0.4.0"
+pytest = "^7.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.isort]
+py_version = 310
+skip = [".gitignore", ".dockerignore"]
+known_first_party = ["parser"]
+line_length = 120
+
+[tool.yapf]
+based_on_style = "google"
+column_limit = 120
+
+[tool.yapfignore]
+ignore_patterns = [
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".venv",
+    "migrations/*",
+    "test/*",
+    "pyproject.toml"
+]
