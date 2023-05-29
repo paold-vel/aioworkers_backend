@@ -1,0 +1,23 @@
+env:
+  app.debug: WEB_APP_DEBUG
+  http.port: WEB_PORT
+
+http:
+  port: 8008
+  groups: ['web']
+
+app:
+  cls: aioworkers_aiohttp.app.Application
+  debug: true
+  groups: ['web']
+  router:
+    cls: aioworkers_aiohttp.router.Router
+    search_dirs:
+      - backend
+    swagger_ui: /docs
+    version_ui: 3
+    cors:
+      domains: '*'
+  resources:
+    /v1:
+      include: backend/web/api.yaml
